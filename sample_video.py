@@ -16,7 +16,7 @@ bot = telegram.Bot(token)
 print(bot.get_me())
 chat_id = "573611170"
 
-video = cv2.VideoCapture(0)
+video = cv2.VideoCapture('http://192.168.0.100:8080/video')
 video.set(3, 256)
 video.set(4, 144) 
 scale_percent = 500
@@ -60,9 +60,9 @@ while True:
         message = "No faces detected"
         cv2.putText(image, message, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.3, (200,200,200), FONT_THICKNESS)
         image = cv2.resize(image, dsize)
-        cv2.imshow(filename, image)
-        if cv2.waitKey(1) & 0xFF == ord("q"):
-            break
+     #   cv2.imshow(filename, image)
+      #  if cv2.waitKey(1) & 0xFF == ord("q"):
+      #      break
         continue
     else:
         print(f', found {len(encodings)} face(s)')
@@ -113,8 +113,8 @@ while True:
                     bot.send_message(chat_id, text)
 
     image = cv2.resize(image, dsize)
-    cv2.imshow(filename, image)
-    if cv2.waitKey(1) & 0xFF == ord("q"):
-        break
+ #   cv2.imshow(filename, image)
+ #   if cv2.waitKey(1) & 0xFF == ord("q"):
+ #       break
     # cv2.waitKey(0)
     # cv2.destroyWindow(filename)        
